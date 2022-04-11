@@ -1,0 +1,78 @@
+import java.nio.charset.StandardCharsets
+
+plugins {
+    id "java"
+    id "net.minecrell.plugin-yml.bukkit" version "0.6.1-SNAPSHOT"
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id "maven-publish"
+}
+
+group = "me.totalfreedom"
+version = "4.8-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://jitpack.io")
+    }
+    maven {
+        url = uri("https://papermc.io/repo/repository/maven-public/")
+    }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT"
+    library "org.projectlombok:lombok:1.18.22"
+    library "org.json:json:20220320"
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
+        exclude group: "org.bukkit", module: "bukkit"
+    }
+    library 'org.apache.logging.log4j:log4j-api:2.17.2'
+    library 'org.apache.logging.log4j:log4j-core:2.17.2'
+    annotationProcessor "org.projectlombok:lombok:1.18.22"
+}
+tasks {
+    jar {
+        dependsOn(shadowJar)
+    }
+    compileJava {
+        options.encoding = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
+
+        // Set the release flag. This configures what version bytecode the compiler will emit, as well as what JDK APIs are usable.
+        // See https://openjdk.java.net/jeps/247 for more information.
+        options.release.set(17)
+    }
+    javadoc {
+        options.encoding = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
+    }
+    processResources {
+        filteringCharset = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
+    }
+}
+
+bukkit {
+    name = "BukkitTelnet"
+    main = "me.totalfreedom.bukkittelnet.BukkitTelnet"
+    apiVersion = "1.18"
+    version = project.version
+    description = "Telnet console access plugin."
+    authors = ["bekvon", "Madgeek1450", "Prozza", "Taahh", "Telesphoreo"]
+    softDepend = ["Vault"]
+}
+
+shadowJar {
+    archiveBaseName.set("BukkitTelnet")
+    archiveVersion.set("")
+    archiveClassifier.set("")
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = "bukkittelnet"
+            version = project.version
+            artifacts = [shadowJar]
+        }
+    }
+}
