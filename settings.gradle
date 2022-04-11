@@ -2,7 +2,7 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         maven {
-            url = uri("https://nexus.telesphoreo.me/repository/gradle-plugins-snapshots/")
+            url = uri("https://nexus.telesphoreo.me/repository/gradle-plugins/")
         }
     }
 }
