@@ -1,15 +1,13 @@
-import java.nio.charset.StandardCharsets
-
 plugins {
     id "java"
+    id "maven-publish"
     id "net.minecrell.plugin-yml.bukkit" version "0.6.1-SNAPSHOT"
     id 'com.github.johnrengelman.shadow' version '7.1.2'
-    id "maven-publish"
 }
 
 group = "me.totalfreedom"
+version = "4.8"
 description = "BukkitTelnet"
-version = "4.8-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -39,19 +37,14 @@ tasks {
     jar {
         dependsOn(shadowJar)
     }
-    compileJava {
-        options.encoding = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
+}
 
-        // Set the release flag. This configures what version bytecode the compiler will emit, as well as what JDK APIs are usable.
-        // See https://openjdk.java.net/jeps/247 for more information.
-        options.release.set(17)
-    }
-    javadoc {
-        options.encoding = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
-    }
-    processResources {
-        filteringCharset = StandardCharsets.UTF_8.name() // We want UTF-8 for everything
-    }
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
 
 bukkit {
@@ -74,18 +67,29 @@ publishing {
     def config = configurations.getByName("library")
     publications {
         maven(MavenPublication) {
+            groupId = 'me.totalfreedom'
+            artifactId = 'BukkitTelnet'
+            version = rootProject.version
             pom.withXml {
+                def dependenciesNode = asNode().appendNode("dependencies")
                 config.getAllDependencies().each { dependency ->
-                    asNode().dependencies[0].appendNode("dependency").with {
+                    dependenciesNode.appendNode("dependency").with {
                         it.appendNode("groupId", dependency.group)
                         it.appendNode("artifactId", dependency.name)
                         it.appendNode("version", dependency.version)
                         it.appendNode("scope", "provided")
                     }
                 }
+                configurations.getByName("compileOnly").getAllDependencies().each { dependency ->
+                    dependenciesNode.appendNode("dependency").with {
+                        it.appendNode("groupId", dependency.group)
+                        it.appendNode("artifactId", dependency.name)
+                        it.appendNode("version", dependency.version)
+                        it.appendNode("scope", "provided")
+                    }
+                }
+                artifacts = [shadowJar]
             }
-            from(components.java)
-            artifacts = [shadowJar]
         }
     }
     repositories {
