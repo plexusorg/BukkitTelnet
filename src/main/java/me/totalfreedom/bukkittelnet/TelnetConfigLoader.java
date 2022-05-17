@@ -1,11 +1,10 @@
 package me.totalfreedom.bukkittelnet;
 
-import me.totalfreedom.bukkittelnet.thirdparty.YamlConfig;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import me.totalfreedom.bukkittelnet.thirdparty.YamlConfig;
 
 public class TelnetConfigLoader
 {

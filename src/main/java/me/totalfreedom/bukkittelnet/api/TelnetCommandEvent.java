@@ -2,7 +2,6 @@ package me.totalfreedom.bukkittelnet.api;
 
 import me.totalfreedom.bukkittelnet.session.SessionCommandSender;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

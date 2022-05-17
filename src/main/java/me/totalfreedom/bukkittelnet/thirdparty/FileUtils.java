@@ -1,12 +1,18 @@
 package me.totalfreedom.bukkittelnet.thirdparty;
 
-import org.bukkit.plugin.Plugin;
-
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import org.bukkit.plugin.Plugin;
 
 /**
  * Represents all File-related utilities.
@@ -17,7 +23,7 @@ public class FileUtils
     /**
      * Downloads a file from the specified URIL and saves it at the specified location.
      *
-     * @param url The URL from where to download the file from.
+     * @param url    The URL from where to download the file from.
      * @param output The file where the file will be stored.
      * @throws MalformedURLException
      * @throws IOException
@@ -35,7 +41,7 @@ public class FileUtils
      * Saves a raw Object to a file.
      *
      * @param object The object to save.
-     * @param file The file where the object will be stored.
+     * @param file   The file where the object will be stored.
      * @throws IOException
      */
     public static void saveObject(Object object, File file) throws IOException
@@ -74,7 +80,7 @@ public class FileUtils
      * Returns a file at located at the Plugins Data folder.
      *
      * @param plugin The plugin to use
-     * @param name The name of the file.
+     * @param name   The name of the file.
      * @return The requested file.
      */
     public static File getPluginFile(Plugin plugin, String name)
@@ -135,7 +141,7 @@ public class FileUtils
     /**
      * Write the specified InputStream to a file.
      *
-     * @param in The InputStream from which to read.
+     * @param in   The InputStream from which to read.
      * @param file The File to write to.
      * @throws IOException
      */

@@ -1,8 +1,7 @@
 package me.totalfreedom.bukkittelnet;
 
-import org.apache.commons.lang.exception.ExceptionUtils;
-
 import java.util.logging.Logger;
+import org.apache.commons.lang.exception.ExceptionUtils;
 
 public final class TelnetLogger
 {
@@ -50,7 +49,7 @@ public final class TelnetLogger
 
         if (message instanceof Throwable)
         {
-            line = ExceptionUtils.getStackTrace((Throwable) message);
+            line = ExceptionUtils.getStackTrace((Throwable)message);
         }
         else
         {
@@ -66,7 +65,7 @@ public final class TelnetLogger
 
         if (message instanceof Throwable)
         {
-            line = ExceptionUtils.getStackTrace((Throwable) message);
+            line = ExceptionUtils.getStackTrace((Throwable)message);
         }
         else
         {

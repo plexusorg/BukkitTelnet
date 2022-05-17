@@ -1,13 +1,12 @@
 package me.totalfreedom.bukkittelnet.thirdparty;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.logging.log4j.core.util.IOUtils;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * Represents a definable YAML configuration.
@@ -31,8 +30,8 @@ public class YamlConfig extends YamlConfiguration
      * config.load();
      * </pre></p>
      *
-     * @param plugin The plugin to which the config belongs.
-     * @param fileName The filename of the config file.
+     * @param plugin       The plugin to which the config belongs.
+     * @param fileName     The filename of the config file.
      * @param copyDefaults If the defaults should be copied and/loaded from a config in the plugin jar-file.
      */
     public YamlConfig(Plugin plugin, String fileName, boolean copyDefaults)
@@ -50,8 +49,8 @@ public class YamlConfig extends YamlConfiguration
      * config.load();
      * </pre></p>
      *
-     * @param plugin The plugin to which the config belongs.
-     * @param file The file of the config file.
+     * @param plugin       The plugin to which the config belongs.
+     * @param file         The file of the config file.
      * @param copyDefaults If the defaults should be copied and/loaded from a config in the plugin jar-file.
      */
     public YamlConfig(Plugin plugin, File file, boolean copyDefaults)

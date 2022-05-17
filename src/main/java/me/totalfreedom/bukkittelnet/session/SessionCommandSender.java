@@ -2,6 +2,8 @@ package me.totalfreedom.bukkittelnet.session;
 
 //import dev.plex.SimulatedPlayer;
 
+import java.util.Set;
+import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 import me.totalfreedom.bukkittelnet.BukkitTelnet;
@@ -15,9 +17,6 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter

@@ -2,6 +2,16 @@ package me.totalfreedom.bukkittelnet.session;
 
 //import dev.plex.SimulatedPlayer;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+import java.net.SocketException;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 import me.totalfreedom.bukkittelnet.TelnetLogger;
 import me.totalfreedom.bukkittelnet.TelnetServer;
 import me.totalfreedom.bukkittelnet.Util;
@@ -11,13 +21,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.io.*;
-import java.net.Socket;
-import java.net.SocketException;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Pattern;
 
 public final class ClientSession extends Thread
 {

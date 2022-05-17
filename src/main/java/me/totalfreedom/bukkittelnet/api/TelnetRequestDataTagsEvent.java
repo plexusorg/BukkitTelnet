@@ -1,12 +1,11 @@
 package me.totalfreedom.bukkittelnet.api;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class TelnetRequestDataTagsEvent extends Event
 {

@@ -1,5 +1,8 @@
 package me.totalfreedom.bukkittelnet;
 
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestDataTagsEvent;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestUsageEvent;
 import org.apache.commons.lang.StringUtils;
@@ -14,10 +17,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerEventListener implements Listener
 {

@@ -21,6 +21,7 @@ public class BukkitTelnet extends JavaPlugin
     public Permission permissions;
 
     public PermissionHandler handler;
+
     @Override
     public void onLoad()
     {
@@ -66,7 +67,8 @@ public class BukkitTelnet extends JavaPlugin
         TelnetLogger.info(plugin.getName() + " disabled");
     }
 
-    private boolean setupPermissions() {
+    private boolean setupPermissions()
+    {
         if (!getServer().getPluginManager().isPluginEnabled("Vault"))
         {
             return false;

@@ -1,15 +1,14 @@
 package me.totalfreedom.bukkittelnet;
 
-import lombok.Getter;
-import me.totalfreedom.bukkittelnet.TelnetConfigLoader.TelnetConfig;
-import me.totalfreedom.bukkittelnet.api.Server;
-import me.totalfreedom.bukkittelnet.session.ClientSession;
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.UnknownHostException;
 import java.util.List;
+import lombok.Getter;
+import me.totalfreedom.bukkittelnet.TelnetConfigLoader.TelnetConfig;
+import me.totalfreedom.bukkittelnet.api.Server;
+import me.totalfreedom.bukkittelnet.session.ClientSession;
 
 public class TelnetServer implements Server
 {

@@ -1,14 +1,18 @@
 package me.totalfreedom.bukkittelnet;
 
-import me.totalfreedom.bukkittelnet.session.ClientSession;
-
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import me.totalfreedom.bukkittelnet.session.ClientSession;
 
 public class SocketListener extends Thread
 {

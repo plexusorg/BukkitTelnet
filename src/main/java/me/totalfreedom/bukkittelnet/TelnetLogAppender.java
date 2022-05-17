@@ -1,13 +1,5 @@
 package me.totalfreedom.bukkittelnet;
 
-import me.totalfreedom.bukkittelnet.session.ClientSession;
-import me.totalfreedom.bukkittelnet.session.FilterMode;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.LogEvent;
-import org.apache.logging.log4j.core.Logger;
-import org.apache.logging.log4j.core.appender.AbstractAppender;
-import org.apache.logging.log4j.core.config.Property;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
@@ -15,6 +7,13 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import me.totalfreedom.bukkittelnet.session.ClientSession;
+import me.totalfreedom.bukkittelnet.session.FilterMode;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.appender.AbstractAppender;
+import org.apache.logging.log4j.core.config.Property;
 
 public class TelnetLogAppender extends AbstractAppender
 {
@@ -114,12 +113,12 @@ public class TelnetLogAppender extends AbstractAppender
 
     public void attach()
     {
-        ((Logger) LogManager.getRootLogger()).addAppender(this);
+        ((Logger)LogManager.getRootLogger()).addAppender(this);
     }
 
     public void deattach()
     {
-        ((Logger) LogManager.getRootLogger()).removeAppender(this);
+        ((Logger)LogManager.getRootLogger()).removeAppender(this);
     }
 
 }
