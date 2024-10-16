@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestDataTagsEvent;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestUsageEvent;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

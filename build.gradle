@@ -1,12 +1,12 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "net.minecrell.plugin-yml.bukkit" version "0.6.1-SNAPSHOT"
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id "net.minecrell.plugin-yml.bukkit" version "0.6.0"
+    id "com.gradleup.shadow" version "8.3.3"
 }
 
 group = "me.totalfreedom"
-version = "4.8"
+version = "4.9"
 description = "BukkitTelnet"
 
 repositories {
@@ -23,15 +23,16 @@ repositories {
 }
 
 dependencies {
-    compileOnly "io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT"
-    annotationProcessor "org.projectlombok:lombok:1.18.24"
-    library "org.projectlombok:lombok:1.18.24"
-    library "org.json:json:20220320"
-    compileOnly("com.github.MilkBowl:VaultAPI:1.7") {
+    compileOnly "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT"
+    annotationProcessor "org.projectlombok:lombok:1.18.34"
+    library "org.projectlombok:lombok:1.18.34"
+    library "org.json:json:20240303"
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7.1") {
         exclude group: "org.bukkit", module: "bukkit"
     }
-    library "org.apache.logging.log4j:log4j-api:2.17.2"
-    library "org.apache.logging.log4j:log4j-core:2.17.2"
+    implementation "org.apache.commons:commons-lang3:3.17.0"
+    library "org.apache.logging.log4j:log4j-api:2.24.1"
+    library "org.apache.logging.log4j:log4j-core:2.24.1"
 }
 tasks {
     jar {
@@ -40,7 +41,7 @@ tasks {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
 tasks.withType(JavaCompile) {
@@ -50,7 +51,7 @@ tasks.withType(JavaCompile) {
 bukkit {
     name = "BukkitTelnet"
     main = "me.totalfreedom.bukkittelnet.BukkitTelnet"
-    apiVersion = "1.18"
+    apiVersion = "1.20"
     version = project.version
     description = "Telnet console access plugin."
     authors = ["bekvon", "Madgeek1450", "Prozza", "Taahh", "Telesphoreo"]
