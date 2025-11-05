@@ -12,11 +12,15 @@ import java.net.SocketException;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import lombok.Getter;
+import lombok.Setter;
 import me.totalfreedom.bukkittelnet.TelnetLogger;
 import me.totalfreedom.bukkittelnet.TelnetServer;
 import me.totalfreedom.bukkittelnet.Util;
 import me.totalfreedom.bukkittelnet.api.TelnetCommandEvent;
 import me.totalfreedom.bukkittelnet.api.TelnetPreLoginEvent;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
@@ -32,8 +36,11 @@ public final class ClientSession extends Thread
     private final TelnetServer telnet;
     private final Socket clientSocket;
     private final String clientAddress;
+    @Getter
     private final SessionCommandSender commandSender;
     //
+    @Getter
+    @Setter
     private FilterMode filterMode = FilterMode.NONE;
     //
     private BufferedWriter writer;
@@ -146,27 +153,12 @@ public final class ClientSession extends Thread
         return username;
     }
 
-    public SessionCommandSender getCommandSender()
-    {
-        return commandSender;
-    }
-
-    public FilterMode getFilterMode()
-    {
-        return filterMode;
-    }
-
-    public void setFilterMode(FilterMode filterMode)
-    {
-        this.filterMode = filterMode;
-    }
-
     public void writeLine(String message)
     {
-        writeRawLine("[" + (username.isEmpty() ? "" : username + "@") + "BukkitTelnet]$ " + message);
+        writeRawLine(PlainTextComponentSerializer.plainText().deserialize("[" + (username.isEmpty() ? "" : username + "@") + "BukkitTelnet]$ " + message));
     }
 
-    public void writeRawLine(String message)
+    public void writeRawLine(Component message)
     {
         if (writer == null || !syncIsConnected())
         {
@@ -175,7 +167,7 @@ public final class ClientSession extends Thread
 
         try
         {
-            writer.write(":" + ChatColor.stripColor(message) + "\r\n");
+            writer.write(":" + PlainTextComponentSerializer.plainText().serialize(message) + "\r\n");
             writer.flush();
         }
         catch (IOException ignored)

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestDataTagsEvent;
 import me.totalfreedom.bukkittelnet.api.TelnetRequestUsageEvent;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -65,7 +66,6 @@ public class PlayerEventListener implements Listener
         }.runTaskLater(plugin, 20L * 2L);
     }
 
-    @SuppressWarnings("unchecked")
     private static String generatePlayerList(final Map<Player, Map<String, Object>> dataTags)
     {
         final JSONArray players = new JSONArray();
@@ -79,7 +79,7 @@ public class PlayerEventListener implements Listener
 
             info.put("name", player.getName());
             info.put("ip", player.getAddress().getAddress().getHostAddress());
-            info.put("displayName", StringUtils.trimToEmpty(player.getDisplayName()));
+            info.put("displayName", PlainTextComponentSerializer.plainText().serialize(player.displayName()));
             info.put("uuid", player.getUniqueId().toString());
 
             for (Map.Entry<String, Object> playerTagsEntry : playerTags.entrySet())
@@ -123,7 +123,6 @@ public class PlayerEventListener implements Listener
     }
 
 
-    @SuppressWarnings("unchecked")
     private static String generateUsageStats()
     {
         final JSONObject info = new JSONObject();

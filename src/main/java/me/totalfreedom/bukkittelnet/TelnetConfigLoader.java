@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 import me.totalfreedom.bukkittelnet.thirdparty.YamlConfig;
 
 public class TelnetConfigLoader
@@ -54,6 +56,8 @@ public class TelnetConfigLoader
         return configEntries;
     }
 
+    @Getter
+    @Setter
     public static final class TelnetConfig
     {
 
@@ -65,36 +69,6 @@ public class TelnetConfigLoader
         private TelnetConfig()
         {
             admins = new HashMap<>();
-        }
-
-        public int getPort()
-        {
-            return port;
-        }
-
-        public void setPort(int port)
-        {
-            this.port = port;
-        }
-
-        public String getAddress()
-        {
-            return address;
-        }
-
-        public void setAddress(String address)
-        {
-            this.address = address;
-        }
-
-        public String getPassword()
-        {
-            return password;
-        }
-
-        public void setPassword(String password)
-        {
-            this.password = password;
         }
 
         public Map<String, List<String>> getAdmins()
@@ -112,5 +86,4 @@ public class TelnetConfigLoader
             admins.put(name, ips);
         }
     }
-
 }

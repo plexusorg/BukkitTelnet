@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 import me.totalfreedom.bukkittelnet.session.ClientSession;
 import me.totalfreedom.bukkittelnet.session.FilterMode;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.Logger;
@@ -47,7 +49,7 @@ public class TelnetLogAppender extends AbstractAppender
         return sessions.remove(session);
     }
 
-    public void removeAllSesssions()
+    public void removeAllSessions()
     {
         sessions.clear();
     }
@@ -89,7 +91,7 @@ public class TelnetLogAppender extends AbstractAppender
         }
     }
 
-    private String formatMessage(String message, LogEvent event)
+    private Component formatMessage(String message, LogEvent event)
     {
         final StringBuilder builder = new StringBuilder();
         final Throwable ex = event.getThrown();
@@ -108,7 +110,7 @@ public class TelnetLogAppender extends AbstractAppender
             builder.append(writer);
         }
 
-        return builder.toString();
+        return PlainTextComponentSerializer.plainText().deserialize(builder.toString());
     }
 
     public void attach()

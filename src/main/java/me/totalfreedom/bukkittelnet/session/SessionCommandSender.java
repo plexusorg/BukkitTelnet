@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.totalfreedom.bukkittelnet.BukkitTelnet;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.ComponentLike;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
@@ -31,9 +32,9 @@ public class SessionCommandSender implements CommandSender
     }
 
     @Override
-    public void sendMessage(String message)
+    public void sendMessage(@NotNull String message)
     {
-        session.writeRawLine(message);
+        session.writeRawLine(Component.text(message));
     }
 
     @Override
@@ -43,6 +44,16 @@ public class SessionCommandSender implements CommandSender
         {
             sendMessage(message);
         }
+    }
+
+    @Override
+    public void sendMessage(@NotNull Component message) {
+        session.writeRawLine(message);
+    }
+
+    @Override
+    public void sendMessage(@NotNull ComponentLike message) {
+        session.writeRawLine(message.asComponent());
     }
 
     @Override

@@ -1,5 +1,7 @@
 package me.totalfreedom.bukkittelnet.api;
 
+import lombok.Getter;
+import lombok.Setter;
 import me.totalfreedom.bukkittelnet.session.SessionCommandSender;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
@@ -12,7 +14,10 @@ public class TelnetCommandEvent extends Event implements Cancellable
     private static final HandlerList handlers = new HandlerList();
 
     private boolean cancelled;
+    @Getter
+    @Setter
     private SessionCommandSender sender;
+    @Getter
     private String command;
 
     public TelnetCommandEvent(SessionCommandSender sender, String command)
@@ -33,21 +38,6 @@ public class TelnetCommandEvent extends Event implements Cancellable
     public void setCancelled(boolean cancel)
     {
         cancelled = cancel;
-    }
-
-    public SessionCommandSender getSender()
-    {
-        return sender;
-    }
-
-    public void setSender(SessionCommandSender sender)
-    {
-        this.sender = sender;
-    }
-
-    public String getCommand()
-    {
-        return command;
     }
 
     public void setCommand(String command)

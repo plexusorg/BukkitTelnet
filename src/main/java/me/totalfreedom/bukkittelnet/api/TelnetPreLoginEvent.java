@@ -1,5 +1,7 @@
 package me.totalfreedom.bukkittelnet.api;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -11,8 +13,12 @@ public class TelnetPreLoginEvent extends Event implements Cancellable
     private static final HandlerList handlers = new HandlerList();
 
     private boolean cancelled = false;
+    @Getter
+    @Setter
     private String name;
+    @Getter
     private final String ip;
+    @Setter
     private boolean bypassPassword;
 
     public TelnetPreLoginEvent(String ip, String name, boolean bypassPassword)
@@ -36,29 +42,9 @@ public class TelnetPreLoginEvent extends Event implements Cancellable
         cancelled = cancel;
     }
 
-    public String getIp()
-    {
-        return ip;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
     public boolean canBypassPassword()
     {
         return bypassPassword;
-    }
-
-    public void setBypassPassword(boolean bypassPassword)
-    {
-        this.bypassPassword = bypassPassword;
     }
 
     @Override

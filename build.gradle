@@ -1,12 +1,12 @@
 plugins {
     id "java"
     id "maven-publish"
-    id "net.minecrell.plugin-yml.bukkit" version "0.6.0"
-    id "com.gradleup.shadow" version "8.3.3"
+    id "de.eldoria.plugin-yml.bukkit" version "0.8.0"
+    id "com.gradleup.shadow" version "9.2.2"
 }
 
 group = "me.totalfreedom"
-version = "4.9"
+version = "4.10"
 description = "BukkitTelnet"
 
 repositories {
@@ -18,21 +18,21 @@ repositories {
         }
     }
     maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
+        url = uri("https://repo.papermc.io/repository/maven-public/")
     }
 }
 
 dependencies {
-    compileOnly "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT"
-    annotationProcessor "org.projectlombok:lombok:1.18.34"
-    library "org.projectlombok:lombok:1.18.34"
-    library "org.json:json:20240303"
+    compileOnly "io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT"
+    annotationProcessor "org.projectlombok:lombok:1.18.42"
+    library "org.projectlombok:lombok:1.18.42"
+    library "org.json:json:20250517"
     compileOnly("com.github.MilkBowl:VaultAPI:1.7.1") {
         exclude group: "org.bukkit", module: "bukkit"
     }
-    implementation "org.apache.commons:commons-lang3:3.17.0"
-    library "org.apache.logging.log4j:log4j-api:2.24.1"
-    library "org.apache.logging.log4j:log4j-core:2.24.1"
+    implementation "org.apache.commons:commons-lang3:3.18.0"
+    library "org.apache.logging.log4j:log4j-api:2.25.2"
+    library "org.apache.logging.log4j:log4j-core:2.25.2"
 }
 tasks {
     jar {

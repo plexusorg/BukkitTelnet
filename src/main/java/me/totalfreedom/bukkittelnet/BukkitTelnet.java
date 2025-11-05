@@ -51,7 +51,7 @@ public class BukkitTelnet extends JavaPlugin
 
         getServer().getServicesManager().register(Server.class, telnet, this, ServicePriority.Normal);
 
-        TelnetLogger.info(plugin.getName() + " v" + plugin.getDescription().getVersion() + " enabled");
+        TelnetLogger.info(plugin.getName() + " v" + plugin.getPluginMeta().getVersion() + " enabled");
     }
 
     @Override
@@ -60,7 +60,7 @@ public class BukkitTelnet extends JavaPlugin
         HandlerList.unregisterAll(plugin);
 
         appender.deattach();
-        appender.removeAllSesssions();
+        appender.removeAllSessions();
 
         telnet.stopServer();
 
@@ -74,7 +74,9 @@ public class BukkitTelnet extends JavaPlugin
             return false;
         }
         RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-        permissions = rsp.getProvider();
+        if (rsp != null) {
+            permissions = rsp.getProvider();
+        }
         return permissions != null;
     }
 

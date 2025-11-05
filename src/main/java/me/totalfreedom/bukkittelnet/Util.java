@@ -24,7 +24,7 @@ public class Util
             octets = 1;
         }
 
-        for (int i = 0; i < octets && i < 4; i++)
+        for (int i = 0; i < octets; i++)
         {
             if (aParts[i].equals("*") || bParts[i].equals("*"))
             {
