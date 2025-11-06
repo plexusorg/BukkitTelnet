@@ -3,5 +3,6 @@ jdk:
 
 install:
   - ./gradlew build clean
-#  - mkdir -p $HOME/.m2/repository/me/totalfreedom/BukkitTelnet/4.10
-#  - cp build/libs/BukkitTelnet.jar $HOME/.m2/repository/me/totalfreedom/BukkitTelnet/4.10
+
+artifacts:
+  path: build/libs/BukkitTelnet.jar
